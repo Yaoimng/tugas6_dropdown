@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderfull Indonesia - Tourism Ticket Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                Wonderfull Indonesia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Discover Indonesia's<br>Natural Beauty</h1>
+                    <p>Book your adventure today and explore the best destinations across Indonesia</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=1170" alt="Indonesia Tourism" class="img-fluid rounded hero-image">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-card">
+                <h2 class="text-center mb-4">Book Your Adventure</h2>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="provinceSelect" class="form-label">Province</label>
+                            <div class="select-wrapper">
+                                <select class="form-select" id="provinceSelect">
+                                    <option value="" selected>Select Province</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="citySelect" class="form-label">City/District</label>
+                            <div class="select-wrapper">
+                                <select class="form-select" id="citySelect" disabled>
+                                    <option value="" selected>Select City/District</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="destinationSelect" class="form-label">Tourism Destination</label>
+                            <div class="select-wrapper">
+                                <select class="form-select" id="destinationSelect" disabled>
+                                    <option value="" selected>Select Destination</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="ticketTypeSelect" class="form-label">Ticket Type</label>
+                            <div class="select-wrapper">
+                                <select class="form-select" id="ticketTypeSelect" disabled>
+                                    <option value="" selected>Select Ticket Type</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Visit Date</label>
+                            <input type="date" class="form-control" id="visitDate" min="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Number of Tickets</label>
+                            <div class="ticket-counter">
+                                <button class="btn btn-outline-secondary counter-btn" id="decrementBtn">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" class="form-control" id="ticketCount" value="1" min="1" max="10">
+                                <button class="btn btn-outline-secondary counter-btn" id="incrementBtn">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="bookingSummary" class="booking-summary mb-4" style="display: none;">
+                    <h5>Booking Summary</h5>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Destination:</span>
+                            <span id="summaryDestination">-</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Ticket Type:</span>
+                            <span id="summaryTicketType">-</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Date:</span>
+                            <span id="summaryDate">-</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tickets:</span>
+                            <span id="summaryTicketCount">-</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Price:</span>
+                            <span id="summaryPrice">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-grid">
+                    <button class="btn btn-primary book-now-btn" id="bookNowBtn" disabled>
+                        Book Now <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-destinations">
+        <div class="container">
+            <h2 class="text-center mb-5">Featured Destinations</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1558005137-d9619a5c539f?q=80&w=1171" class="img-fluid" alt="Bali">
+                            <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Bali</span>
+                        </div>
+                        <div class="destination-info">
+                            <h4>Tegalalang Rice Terraces</h4>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(234 reviews)</span>
+                            </div>
+                            <p>Experience the beauty of Bali's most famous rice terraces with stunning views.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">From Rp 85.000</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1707371773021-d39017b761f0?q=80&w=1949&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid" alt="Yogyakarta">
+                            <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Yogyakarta</span>
+                        </div>
+                        <div class="destination-info">
+                            <h4>Borobudur Temple</h4>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(512 reviews)</span>
+                            </div>
+                            <p>Visit the world's largest Buddhist temple and witness a magnificent sunrise.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">From Rp 350.000</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1657214668218-cad04c762905?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid" alt="Jakarta">
+                            <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Jakarta</span>
+                        </div>
+                        <div class="destination-info">
+                            <h4>Taman Mini Indonesia Indah</h4>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(189 reviews)</span>
+                            </div>
+                            <p>Explore Indonesia's cultural diversity in this beautiful park with miniature replicas.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">From Rp 120.000</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4><i class="fas fa-map-marked-alt me-2"></i>Wonderfull Indonesia</h4>
+                    <p>Discover the beauty of Indonesia with our easy and convenient ticketing platform.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Packages</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Popular Destinations</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Bali</a></li>
+                        <li><a href="#">Raja Ampat</a></li>
+                        <li><a href="#">Yogyakarta</a></li>
+                        <li><a href="#">Lombok</a></li>
+                        <li><a href="#">Bromo</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Sudirman No. 123, Jakarta</li>
+                        <li><i class="fas fa-phone"></i> +62 21 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@wonderfull.id</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Wonderfull Indonesia. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
